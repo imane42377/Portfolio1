@@ -15,9 +15,12 @@ const Header = () => {
                     {/* logo */}
                     <div className='flex items-center justify-between py-6'>
                         <Logo />
-                        <ThemeSwitcher />
+                        <div className='ml-auto pr-5'>
+                            <ThemeSwitcher />
+                        </div>
+                        
                         <Sheet>
-                            <SheetTrigger className='cursor-pointer text-[30px] text-white'>
+                            <SheetTrigger className='cursor-pointer text-[30px] text-ring'>
                                 <Logs />
                             </SheetTrigger>
                             <SheetContent className='bg-primary border border-none flex flex-col justify-between items-center pt-16 pb-20'
