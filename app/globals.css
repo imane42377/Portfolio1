@@ -1,0 +1,60 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@theme{
+  --breakpoint-sm:640px;
+  --breakpoint-md:768px;
+  --breakpoint-lg:1024px;
+  --breakpoint-xl:1130px;
+  --breakpoint-2xl:1140px;
+
+  --color-primary: #252525;
+  --color-secondary: #060b20;
+  --color-accent: #4357f0;
+  --color-accent-hover: #374cedff;
+  --color-tertiary:#171c2f;
+  --color-tertiary-hover: #1f2740;
+  --color-dot:#f94545;
+  --font-primary: var(--font-sometypeMono);
+
+}
+body{
+  @apply bg-primary text-white leading-relaxed font-primary
+}
+.h1{
+  @apply text-[35px] md:text-[52px] xl:text-[56px] leading-none tracking-tight font-extrabold ;
+}
+.h2{
+  @apply text-[24px] md:text-[32px] xl:text-[38px] leading-[1,15] tracking-tight font-medium ;
+}
+.h3{
+  @apply text-[28px] md:text-[30px] xl:text-[32px] leading-[1,2] tracking-tight font-medium ;
+}
+.h4{
+  @apply text-[22px] md:text-[26px] leading-snug font-medium ;
+}
+.container{
+  @apply px-3.75;
+}
+.btn{
+  @apply flex items-center justify-center rounded-full cursor-pointer transition-all font-medium h-14;
+}
+.btn-sm{
+  @apply min-w-42 px-5 text-[15px] font-semibold;
+}
+.btn-lg{
+  @apply min-w-50 px-6;
+}
+.btn-accent{
+  @apply bg-accent hover:bg-accent-hover;
+}
+.btn-tertiary{
+  @apply bg-tertiary hover:bg-tertiary-hover;
+}
+.btn-white {
+  @apply bg-white hover:bg-white/90 text-primary
+}
+.swiper{
+  margin:0 !important;
+}
