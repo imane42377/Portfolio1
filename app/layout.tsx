@@ -1,3 +1,4 @@
+
 import type { Metadata } from "next";
 import { Sometype_Mono } from "next/font/google";
 import "./globals.css";
@@ -5,6 +6,7 @@ import MainNav from "./elements/MainNav";
 import PageTransition from "./elements/PageTransition";
 import RectangleTransition from "./elements/RectangleTransition";
 import Header from "./elements/Header";
+import { ThemeProvider } from "./context/theme-context";
 
 
 const SometypeMono = Sometype_Mono({
@@ -28,6 +30,7 @@ export default function RootLayout({
       className={`${SometypeMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col xl:overflow-hidden ">
+      <ThemeProvider >
         <RectangleTransition />
         <PageTransition>
         <div className="flex">
@@ -40,7 +43,7 @@ export default function RootLayout({
         </div>
         </div>
        </PageTransition>
-       
+       </ThemeProvider>
         </body>
     </html>
   );

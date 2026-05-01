@@ -1,35 +1,48 @@
 @import "tailwindcss";
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
 
-@theme{
-  --breakpoint-sm:640px;
-  --breakpoint-md:768px;
-  --breakpoint-lg:1024px;
-  --breakpoint-xl:1130px;
-  --breakpoint-2xl:1140px;
-
-  --color-primary: #252525;
-  --color-secondary: #060b20;
+@theme {
+  --color-primary: #efefef;
+  --color-secondary: #e3e6f1;
+  --color-ring:#252525;
   --color-accent: #4357f0;
   --color-accent-hover: #374cedff;
-  --color-tertiary:#171c2f;
-  --color-tertiary-hover: #1f2740;
-  --color-dot:#f94545;
+  --color-tertiary: #c4c6cb;
+  --color-tertiary-hover: #cacacf;
+  --color-dot: #f94545;
+  --color-select:#ebebeb;
+
   --font-primary: var(--font-sometypeMono);
+
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1130px;
+  --breakpoint-2xl: 1140px;
+}
+
+[data-theme="dark"] {
+  --color-primary: #252525;
+  --color-secondary: #060b20;
+  --color-ring:#efefef;
+  --color-accent: #4357f0;
+  --color-accent-hover: #374cedff;
+  --color-tertiary: #171c2f;
+  --color-tertiary-hover: #1f2740;
+  --color-dot: #f94545;
+  --color-select:#1a1d2e;
 
 }
 body{
-  @apply bg-primary text-white leading-relaxed font-primary
+  @apply bg-primary text-ring leading-relaxed font-primary
 }
 .h1{
   @apply text-[35px] md:text-[52px] xl:text-[56px] leading-none tracking-tight font-extrabold ;
 }
 .h2{
-  @apply text-[24px] md:text-[32px] xl:text-[38px] leading-[1,15] tracking-tight font-medium ;
+  @apply text-[24px] md:text-[32px] xl:text-[38px] leading-[1.15] tracking-tight font-medium ;
 }
 .h3{
-  @apply text-[28px] md:text-[30px] xl:text-[32px] leading-[1,2] tracking-tight font-medium ;
+  @apply text-[28px] md:text-[30px] xl:text-[32px] leading-[1.2] tracking-tight font-medium ;
 }
 .h4{
   @apply text-[22px] md:text-[26px] leading-snug font-medium ;

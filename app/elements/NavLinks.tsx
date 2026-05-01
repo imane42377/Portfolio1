@@ -38,7 +38,7 @@ const pathname=usePathname();
        <Link
         key={i}
         href={link.path}
-       className={`relative text-lg uppercase text-white ${isActive && `after:content-[''] after:block after:absolute after:left-0 after:top-1/2 ${lineWith} after:h-1 after:bg-accent after:-translate-y-1/2 after:z-0 `}`}
+       className={`relative text-lg uppercase text-ring ${isActive && `after:content-[''] after:block after:absolute after:left-0 after:top-1/2 ${lineWith} after:h-1 after:bg-accent after:-translate-y-1/2 after:z-0 `}`}
         >
           <span className='relative z-10'>
             {link.name}

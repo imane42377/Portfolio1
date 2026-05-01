@@ -64,7 +64,7 @@ const page = () => {
           </p>
 
           {/* BUTTON */}
-          <button className="btn btn-lg btn-accent xl:mb-16 mb-5">
+          <button className="btn btn-lg btn-accent text-white  xl:mb-16 mb-5">
             <div className="flex items-center justify-center gap-2">
               <span>Let's talk.</span>
               <ArrowUpRight width={25} height={25} />

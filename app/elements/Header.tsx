@@ -1,9 +1,10 @@
-import React from 'react'
+"use client";
 import Logo from './Logo'
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
-import { ArrowDownToLine, ArrowUpRight, Logs } from 'lucide-react'
+import { ArrowDownToLine, Logs } from 'lucide-react'
 import NavLinks from './NavLinks'
 import Socials from './Socials'
+import { ThemeSwitcher } from '../switcher/theme-switcher';
 
 const Header = () => {
     return (
@@ -14,6 +15,7 @@ const Header = () => {
                     {/* logo */}
                     <div className='flex items-center justify-between py-6'>
                         <Logo />
+                        <ThemeSwitcher />
                         <Sheet>
                             <SheetTrigger className='cursor-pointer text-[30px] text-white'>
                                 <Logs />

@@ -31,7 +31,7 @@ const Contact = () => {
   const inputClass = `
     w-full px-4 py-3 rounded-lg text-sm outline-none
     bg-secondary border border-tertiary-hover
-    text-white placeholder-white/40
+    text-ring placeholder-ring
     focus:border-[var(--color-accent)] transition-colors duration-200
   `;
 
@@ -154,7 +154,7 @@ const Contact = () => {
   <SelectTrigger
     className="w-full px-4 py-3 rounded-lg text-sm outline-none transition-colors duration-200"
     style={{
-      backgroundColor: "#484f73",
+      backgroundColor: "var(--color-select)",
       border: "1px solid #565b81",
      
     }}
@@ -174,7 +174,7 @@ const Contact = () => {
         key={opt}
         value={opt}
         className="text-sm cursor-pointer focus:bg-accent focus:text-white"
-        style={{ color: "#9ca3af" }}
+        style={{ color: "#f0f3f9" }}
       >
         {opt}
       </SelectItem>

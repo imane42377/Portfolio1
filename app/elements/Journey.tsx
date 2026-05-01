@@ -25,7 +25,7 @@ const tabs = [
 const JourneyCard = ({ date, role, place, link }: { date: string, role: string, place: string, link?: string }) => (
     <div className="bg-secondary rounded-lg p-5 md:p-8 flex flex-col items-center text-center gap-2 md:gap-3">
         <span className="text-accent font-mono text-sm md:text-base">{date}</span>
-        <h3 className="text-white font-bold text-lg md:text-xl">{role}</h3>
+        <h3 className="text-ring font-bold text-lg md:text-xl">{role}</h3>
         <p className="text-muted-foreground font-mono text-sm md:text-base">{place}</p>
         {link && (
             <a href={link} className="text-accent font-mono text-sm hover:underline">
@@ -50,7 +50,7 @@ const Journey = () => {
                     <button
                         key={i}
                         onClick={() => setActive(i)}
-                        className={`btn btn-sm text-sm px-4 py-2 ${active === i ? "btn-accent" : "btn-secondary"}`}
+                        className={`btn btn-sm text-sm px-4 py-2 ${active === i ? "btn-accent  text-white" : "btn-secondary"}`}
                     >
                         {tab.label}
                     </button>

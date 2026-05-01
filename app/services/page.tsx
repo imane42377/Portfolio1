@@ -9,22 +9,29 @@ import {
     SiFramer,
 } from "react-icons/si";
 import { RiPagesLine, RiBriefcaseLine } from "react-icons/ri";
+import { Code, FolderCode, Server } from "lucide-react";
 
 const services  = [
     {
-        icon: <SiReact size={36} />,
+        icon: <FolderCode size={36} />,
         title: "Frontend Development",
         description: "Modern, responsive UIs with React & Next.js.",
         href: "/contact",
     },
     {
-        icon: <SiSpringboot size={36} />,
+        icon: <Server size={36} />,
         title: "Backend Development",
         description: "Scalable APIs and server-side logic.",
         href: "/contact",
     },
     {
-        icon: <SiNextdotjs size={36} />,
+        icon: <svg xmlns="http://www.w3.org/2000/svg" className="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+ 
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+    d="M8 9l-3 3 3 3M16 9l3 3-3 3"/>
+  <rect x="4" y="3" width="16" height="4" rx="1"/>
+  <rect x="4" y="17" width="16" height="4" rx="1"/>
+</svg>,
         title: "Full Stack Development",
         description: "End-to-end product delivery from DB to UI.",
         href: "/contact",
@@ -37,7 +44,7 @@ const services  = [
     },
     {
         icon: <RiBriefcaseLine size={36} />,
-        title: "Portfolio Sites",
+        title: "Portfolio WebSites",
         description: "Personal portfolios that get you hired.",
         href: "#",
     },
@@ -117,10 +124,10 @@ const Services = () => {
 
                             {/* Bottom */}
                             <div className="flex flex-col gap-2">
-                                <h3 className="text-white font-bold text-lg leading-snug">
+                                <h3 className="text-ring font-bold text-lg leading-snug">
                                     {service.title}
                                 </h3>
-                                <p className="text-white/40 font-mono text-sm leading-relaxed">
+                                <p className="text-ring/50 font-mono text-sm leading-relaxed">
                                     {service.description}
                                 </p>
                             </div>

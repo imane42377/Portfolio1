@@ -22,7 +22,7 @@ const Testemonials = () => {
             modules={[Autoplay]}
             loop={false}
             autoplay={{ delay: 4000, disableOnInteraction: false }}
-            className=" bg-secondary text-white"
+            className=" bg-secondary text-ring"
              style={{ overflow: "hidden" }}
         >
             {tests.map((tes, i) => (
