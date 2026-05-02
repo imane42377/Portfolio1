@@ -1,184 +1,241 @@
 "use client";
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { Variants } from "framer-motion";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import "swiper/css";
+import "swiper/css/pagination";
+import { Swiper, SwiperSlide } from "swiper/react";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowUpRight, FileText } from "lucide-react";
+import { FaGithub } from "react-icons/fa";
+import { Pagination } from "swiper/modules";
+
 const projects = [
   {
-    id: 1,
-    title: "Crypto Dashboard",
-    category: "Frontend",
-    tag: "React",
-    year: "2024",
-    description: "Real-time trading interface with live charts and portfolio tracking.",
-    color: "var(--color-accent)",
-  },
-  {
-    id: 2,
-    title: "E-Commerce Platform",
-    category: "Fullstack",
-    tag: "Next.js",
-    year: "2024",
-    description: "Full-featured store with auth, payments, and admin panel.",
-    color: "var(--color-accent)",
-  },
-  {
     id: 3,
-    title: "Portfolio Builder",
-    category: "Frontend",
-    tag: "Vue",
-    year: "2023",
-    description: "Drag-and-drop portfolio generator with live preview.",
-    color: "var(--color-accent)",
+    category: "applications",
+    title: "Construction Permit Management",
+    description: "During my internship at Ouled Mrah Municipality, I developed a web app to digitize construction permits and automate tax calculations. This replaced paper workflows, reducing delays and errors while improving transparency.",
+    image: "/assets/Capture d'écran 2025-07-12 162846.png",
+    pdf: "/Mon-Rapport-Meliane.pdf",
+    link: "",
+    github: "",
+    teck: ["VB.net", "SQL Server"],
   },
   {
     id: 4,
-    title: "SaaS API Gateway",
-    category: "Fullstack",
-    tag: "Node.js",
-    year: "2023",
-    description: "Rate-limited REST API with OAuth2 and usage analytics.",
-    color: "var(--color-accent)",
+    category: "applications",
+    title: "Orders & Delivery",
+    description: "At Nova Maroc, I developed an order/delivery tracking app that digitized manual processes, reducing errors and speeding up operations by 40%. The system featured real-time updates and automated reports.",
+    image: "/assets/Capture d'écran 2025-06-15 122052.png",
+    pdf: "/Rapport_stage_MELIANE.pdf",
+    link: "",
+    github: "https://github.com/imane42377/Commandes-Livraison",
+    teck: ["Python tkinter", "MySQL Workbench"],
+  },
+  {
+    id: 5,
+    category: "fullstack",
+    title: "Library",
+    description: "With 2 classmates, I developed 'Library' — a management system for cataloging books, tracking loans, and managing members. Delivered a working prototype in 3 weeks.",
+    image: "/assets/Capture d'écran 2025-07-12 181622.png",
+    pdf: "/Rapport_gb.pdf",
+    link: "",
+    github: "https://github.com/imane42377/Library",
+    teck: ["HTML", "CSS Bootstrap", "JavaScript jQuery", "PHP", "MySQL"],
+  },
+  {
+    id: 6,
+    category: "fullstack",
+    title: "CliqRDV",
+    description: "For my PFE, I co-developed a healthcare web app for online appointment booking. Our solution featured doctor scheduling and patient registration.",
+    image: "/assets/Capture d'écran 2025-07-12 184923.png",
+    pdf: "/PFE_Rapport.pdf",
+    link: "https://imane.rf.gd/a",
+    github: "https://github.com/imane42377/PFE_-CliqRDV-",
+    teck: ["HTML", "CSS Bootstrap", "JavaScript", "PHP", "MySQL"],
+  },
+  {
+    id: 7,
+    category: "frontend",
+    title: "MY_Calculator",
+    description: "A simple calculator with basic functions that I created.",
+    image: "/assets/Capture d'écran 2025-07-12 191901.png",
+    pdf: "",
+    link: "https://imane42377.github.io/My_Calculator/",
+    github: "https://github.com/imane42377/My_Calculator",
+    teck: ["HTML", "CSS", "JavaScript"],
+  },
+    {
+    id: 8,
+    category: "frontend landing page",
+    title: "Lumiére Privé Landing Page",
+    description: "This project focuses on creating a premium and elegant user experience inspired by luxury concierge services,with multi-language support & light/dark mode toggling.",
+    image: "/assets/Capture d'écran 2026-04-28 135313.png",
+    pdf: "",
+    link: "lumi-re-priv-e-xn4b.vercel.app/",
+    github: "https://github.com/imane42377/Lumi-re-Priv-e",
+    teck: ["i18n","React", "Tailwind CSS", "Framer-Motion"],
+  },
+    {
+    id: 9,
+    category: "frontend landing page",
+    title: "Ecommerce ",
+    description: "Modern ecommerce landing page (React + Tailwind) with multi-language support & light/dark mode toggling",
+    image: "/assets/Capture d'écran 2026-05-02 133820.png",
+    pdf: "",
+    link: "ttps://e-commerce-landing-page-nine-lilac.vercel.app/",
+    github: "https://github.com/imane42377/ECommerce_landing_page",
+    teck: ["i18n","React", "Tailwind CSS", "Framer-Motion"],
+  },
+   {
+    id:10,
+    category: "fullstack",
+    title: "Trading Web Application",
+    description: "TimeTravel – Crypto & Stock Investing Platform (Private, Commercial Project) with multi-language support & light/dark mode toggling",
+    image: "/assets/Capture d'écran 2026-05-02 134518.png",
+    pdf: "",
+    link: "",
+    github: "https://github.com/imane42377/TimeTravel-Crypto-Stock-Investing-Platform",
+    teck: ["i18n","React", "Tailwind CSS", "Redux" , "SpringBoot" ,"MySql WorkBanch",'CoinGeko API'],
+  },
+   {
+    id: 11,
+    category: "frontend Portfolio",
+    title: "Portfolio",
+    description: "",
+    image: "/assets/Capture d'écran 2026-05-02 135321.png",
+    pdf: "",
+    link: "https://portfolio-meliane-imane.vercel.app",
+    github: "https://github.com/imane42377/Portfolio",
+    teck: ["i18n","NextJs","React", "Tailwind CSS", "Framer-Motion"],
   },
 ];
 
-const filters = ["All", "Frontend", "Fullstack"];
-
-const containerVariants = {
-  hidden: {},
-  show: {
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
-
-const cardVariants : Variants = {
-  hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] } },
-};
+const categories = ["frontend" ,"frontend landing page","frontend Portfolio", "fullstack", "applications", "branding"];
 
 const Work = () => {
-  const [active, setActive] = useState("All");
-
-  const filtered =
-    active === "All" ? projects : projects.filter((p) => p.category === active);
-
   return (
     <motion.section
       initial={{ opacity: 0 }}
       animate={{
         opacity: 1,
-        transition: { delay: 1.5, duration: 0.4, ease: "easeIn" },
+        transition: { delay: 2.4, duration: 0.4, ease: "easeIn" },
       }}
-      className="min-h-screen px-6 py-20 md:px-16"
+      className="min-h-screen flex items-center py-24 xl:py-0"
     >
-      <div className="max-w-5xl mx-auto">
+      <div className="container mx-auto w-full flex flex-col justify-center">
+        <h2 className="h2 mb-6 xl:mb-12 max-w-150">
+          My Latest <span className="text-accent italic">Work</span>
+        </h2>
 
-        {/* Heading */}
-        <div className="mb-10">
-          <h2
-            className="text-4xl md:text-5xl font-bold tracking-tight"
-            style={{ fontFamily: "'Courier New', monospace" }}
-          >
-            My Latest{" "}
-            <span style={{ color: "var(--color-accent)" }}>Work</span>
-          </h2>
-        </div>
-
-        {/* Filter Tabs */}
-        <div className="flex gap-3 mb-12">
-          {filters.map((filter) => (
-            <button
-              key={filter}
-              onClick={() => setActive(filter)}
-              className="relative px-6 py-2 rounded-full text-sm font-medium transition-colors duration-200 outline-none"
-              style={{
-                backgroundColor: active === filter ? "var(--color-accent)" : "transparent",
-                color: active === filter ? "#ffffff" : "#9ca3af",
-                border: active === filter ? "none" : "1.5px solid #2a2d3a",
-                fontFamily: "'Courier New', monospace",
-                cursor: "pointer",
-              }}
-            >
-              {filter}
-            </button>
-          ))}
-        </div>
-
-        {/* Project Grid */}
-        <motion.div
-          key={active}
-          variants={containerVariants}
-          initial="hidden"
-          animate="show"
-          className="grid grid-cols-1 sm:grid-cols-2 gap-5"
-        >
-          {filtered.map((project) => (
-            <motion.div
-              key={project.id}
-              variants={cardVariants}
-              className="group relative rounded-2xl p-6 cursor-pointer overflow-hidden"
-              style={{
-                backgroundColor: "#161822",
-                border: "1px solid #1e2030",
-                transition: "border-color 0.2s",
-              }}
-              whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
-            >
-              {/* Glow accent */}
-              <div
-                className="absolute top-0 left-0 w-full h-1 rounded-t-2xl"
-                style={{ backgroundColor: project.color }}
-              />
-
-              {/* Top row */}
-              <div className="flex justify-between items-start mb-4 pt-2">
-                <span
-                  className="text-xs px-3 py-1 rounded-full font-medium"
-                  style={{
-                    backgroundColor: project.color + "22",
-                    color: project.color,
-                    fontFamily: "'Courier New', monospace",
-                  }}
-                >
-                  {project.tag}
-                </span>
-                <span
-                  className="text-xs"
-                  style={{ color: "#4b5563", fontFamily: "'Courier New', monospace" }}
-                >
-                  {project.year}
-                </span>
-              </div>
-
-              {/* Title */}
-              <h3
-                className="text-xl font-bold mb-2"
-                style={{ fontFamily: "'Courier New', monospace", color: "#e8e6f0" }}
+        <Tabs defaultValue="frontend" className="w-full flex flex-col gap-6 xl:gap-12">
+          <TabsList className="flex flex-wrap justify-center items-center gap-4 h-full mb-4 xl:mb-0">
+            {categories.map((category) => (
+              <TabsTrigger
+                key={category}
+                value={category}
+                className="capitalize border border-ring/10 data-[state=active]:bg-accent data-[state=active]:text-white data-[state=active]:border-accent h-12 px-6 rounded-full cursor-pointer"
               >
-                {project.title}
-              </h3>
+                {category === "uiux" ? "UI UX Design" : category}
+              </TabsTrigger>
+            ))}
+          </TabsList>
 
-              {/* Description */}
-              <p
-                className="text-sm leading-relaxed"
-                style={{ color: "#6b7280", fontFamily: "'Courier New', monospace" }}
-              >
-                {project.description}
-              </p>
+          <div className="h-100 xl:h-full scrollbar scrollbar-thumb-accent scrollbar-track-accent/5 overflow-y-scroll xl:overflow-y-visible">
+            {categories.map((category) => (
+              <TabsContent key={category} value={category}>
+                {projects.filter((p) => p.category === category).length === 0 ? (
+                  <div className="flex items-center justify-center h-60 text-muted-foreground text-sm">
+                    No projects in this category yet.
+                  </div>
+                ) : (
+                  <Swiper
+                    modules={[Pagination]}
+                    pagination={{ clickable: true, dynamicBullets: true }}
+                    className="h-max xl:h-115"
+                  >
+                    {projects
+                      .filter((project) => project.category === category)
+                      .map((project) => (
+                        <SwiperSlide key={project.id} className="h-full cursor-pointer">
+                          <div className="flex flex-col xl:flex-row gap-8 xl:gap-12">
 
-              {/* Arrow */}
-              <div
-                className="mt-5 flex items-center gap-1 text-xs font-medium group-hover:gap-3 transition-all duration-200"
-                style={{ color: project.color }}
-              >
-                View Project
-                <span>→</span>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+                            {/* Text Side */}
+                            <div className="w-full max-w-95 flex flex-col gap-6 xl:gap-8 xl:pt-6 order-2 xl:order-0">
+                              <h3 className="h3">{project.title}</h3>
+                              <p className="text-muted-foreground text-sm leading-relaxed">
+                                {project.description}
+                              </p>
 
+                              <div className="max-w-96">
+                                <p className="mb-4">Technologies Used</p>
+                                <ul className="flex flex-wrap gap-4">
+                                  {project.teck.map((item, i) => (
+                                    <li
+                                      key={i}
+                                      className="flex items-center gap-4 bg-secondary h-7 px-3.5 rounded-full"
+                                    >
+                                      {item}
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+
+                              {/* Buttons */}
+                              <div className="flex flex-col xl:flex-row gap-4 items-start flex-wrap">
+                                {project.link && (
+                                  <Link href={project.link} target="_blank" rel="noopener noreferrer">
+                                    <button className="btnn btn-sm btn-accent flex gap-2">
+                                      <ArrowUpRight className="text-xl" />
+                                      <span>Live Project</span>
+                                    </button>
+                                  </Link>
+                                )}
+                                {project.github && (
+                                  <Link href={project.github} target="_blank" rel="noopener noreferrer">
+                                    <button className="btnn btn-sm btn-ring flex gap-2">
+                                      <FaGithub className="text-xl" />
+                                      <span>Github Repo</span>
+                                    </button>
+                                  </Link>
+                                )}
+                                {project.pdf && (
+                                  <a href={project.pdf} download>
+                                    <button className="btnn btn-sm btn-ring flex gap-2">
+                                      <FileText className="text-xl" />
+                                      <span>Download Report</span>
+                                    </button>
+                                  </a>
+                                )}
+                              </div>
+                            </div>
+
+                            {/* Image Side */}
+                            <div className="w-full h-50 md:h-75 xl:h-100 relative bg-secondary order-1 xl:order-0 rounded-lg overflow-hidden">
+                              {project.image ? (
+                                <Image
+                                  src={project.image}
+                                  alt={project.title}
+                                  fill
+                                  className="object-cover"
+                                />
+                              ) : (
+                                <div className="w-full h-full flex items-center justify-center text-muted-foreground text-sm">
+                                  No Image Available
+                                </div>
+                              )}
+                            </div>
+
+                          </div>
+                        </SwiperSlide>
+                      ))}
+                  </Swiper>
+                )}
+              </TabsContent>
+            ))}
+          </div>
+        </Tabs>
       </div>
     </motion.section>
   );
